@@ -11,12 +11,18 @@ function addProductToCart(product) {
     cart = [];
   }
 
-  // Need to find how to change quantity if the product already exist
-  //
+  // Checking if the element is already in the card
+  const alreadyInCart = cart.find((element) => element.Id === product.Id);
 
-  cart.push(product);
+  if (alreadyInCart) {
+    alreadyInCart.Quantity += 1;
+  } else {
+    product.Quantity = 1;
+    cart.push(product);
+  }
   setLocalStorage("so-cart", cart);
 }
+
 // add to cart button event handler
 async function addToCartHandler(e) {
   const product = await dataSource.findProductById(e.target.dataset.id);
