@@ -64,4 +64,3 @@ export default class ProductDetails {
         element.insertAdjacentHTML("afterBegin", html)
     }
 }
-  
