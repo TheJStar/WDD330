@@ -1,4 +1,6 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, changeValueFromKeyList } from "./utils.mjs";
+
+const cartIconNotification = document.querySelector(".item-count")
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -32,3 +34,4 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+changeValueFromKeyList(cartIconNotification, "so-cart") 

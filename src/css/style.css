@@ -97,10 +97,22 @@ button {
 /* End utility classes */
 
 /* Cart icon styles */
+.item-count {
+  background-color: #f0a868;
+  border-radius: 100%;
+  position: relative;
+  right: -10px;
+  top: -40px;
+}
+
 .cart {
   padding-top: 1em;
   position: relative;
   text-align: center;
+}
+
+.cart a {
+  text-decoration: none;
 }
 
 .cart svg {
