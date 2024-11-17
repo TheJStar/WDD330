@@ -31,3 +31,17 @@ export function getParams(param) {
   const product = urlParams.get(param)
   return product
 }
+// add cards to elemets with specific template
+export async function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+  let html = "";
+
+  if (clear) {
+    parentElement.innerHTML = ""
+  }
+
+  list.forEach(product => {
+      html += templateFn(product)
+  });
+
+  parentElement.insertAdjacentHTML(position, html);
+}
