@@ -3,6 +3,11 @@ import { getLocalStorage } from "./utils.mjs";
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
 
+  if (!cartItems) {
+    const cartTotal = document.querySelector(".cart-footer");
+    cartTotal.setAttribute("class", "hide");
+  }
+
   if (!Array.isArray(cartItems) || cartItems.length === 0) {
     document.querySelector(".product-list").innerHTML =
       "<p>Your cart is empty</p>";
@@ -10,6 +15,8 @@ function renderCartContents() {
   }
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  calculateTotal(cartItems);
 }
 
 function cartItemTemplate(item) {
@@ -29,6 +36,14 @@ function cartItemTemplate(item) {
 </li>`;
 
   return newItem;
+}
+
+function calculateTotal(cartItems) {
+  let total = 0;
+  cartItems.map((item) => (total += item.FinalPrice * item.Quantity));
+
+  let cartPElement = document.querySelector(".cart-total");
+  cartPElement.insertAdjacentHTML("afterbegin", `Total: $${total}`);
 }
 
 renderCartContents();
