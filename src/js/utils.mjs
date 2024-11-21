@@ -32,13 +32,12 @@ export function getParams(param) {
   return product
 }
 
-export function renderListWithTemplate (templateFn, parentElement, list, position = "afterbegin", clear = false) {
-  const htmlStrings = list.map(templateFn);
-  // if clear is true we need to clear out the contents of the parent.
+// generates content with HTML template 
+export function renderListWithTemplate(template, parentElement, list, position="afterbegin", clear=false) {
   if (clear) {
-    parentElement.innerHTML = "";
+    parentElement.insertAdjacentHTML(position, ``); 
+  } else {
+    const html = list.map(template);
+    parentElement.insertAdjacentHTML(position, html.join(""));
   }
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
-
-export default renderListWithTemplate;
