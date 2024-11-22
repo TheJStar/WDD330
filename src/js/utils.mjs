@@ -50,3 +50,30 @@ export function changeValueFromKeyList(element, key) {
     element.textContent = getLocalStorage(key).length
   }
 }
+
+export function renderWithTemplate(template, parentElement, date, callback) {
+  parentElement.insertAdjacentHTML("afterbegin", template);
+  if (callback) {
+    callback(data);
+  }
+}
+
+export async function loadHeaderFooter() {
+  //Load the header and footer templates in from our partials
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+
+  // Grab the header and footer elements out of the DOM.
+  const headerElement = document.getElementById("header");
+  const footerElement = document.getElementById("footer");
+
+  // Render the header and footer
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
+}
+
+async function loadTemplate(path) {
+  const responce = await fetch(path);
+  const template = await responce.text();
+  return template;
+}

@@ -2,6 +2,7 @@ import {
   getLocalStorage,
   setLocalStorage,
   changeValueFromKeyList,
+  loadHeaderFooter,
 } from "./utils.mjs";
 
 const cartIconNotification = document.querySelector(".item-count");
@@ -81,5 +82,6 @@ function calculateTotal(cartItems) {
   cartPElement.insertAdjacentHTML("afterbegin", `Total: $${total}`);
 }
 
+loadHeaderFooter();
 renderCartContents();
-changeValueFromKeyList(cartIconNotification, "so-cart");
+//changeValueFromKeyList(cartIconNotification, "so-cart");
