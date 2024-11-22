@@ -1,5 +1,5 @@
 import { setLocalStorage, getLocalStorage, getParams, loadHeaderFooter } from "./utils.mjs";
-loadHeaderFooter(); 
+//loadHeaderFooter(); 
 export default class ProductDetails {
     constructor(productId, dataSource){
         this.productId = productId;
