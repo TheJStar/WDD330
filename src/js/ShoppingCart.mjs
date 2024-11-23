@@ -5,7 +5,7 @@ import {
     loadHeaderFooter,
   } from "./utils.mjs";
 
-// //return a template literal string for each of the templates needed
+// //return a template literal string for each of the templates needed 
 function cartItemTemplate(item) {
     const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
@@ -33,7 +33,13 @@ function cartItemTemplate(item) {
         this.parentSelector = parentSelector;
       }
 
-    renderCartContents() {
+    init () {
+      renderCartContents();
+      calculateTotal();
+    }
+  }
+
+  function renderCartContents() {
         const cartItems = getLocalStorage("so-cart");
         if (!cartItems) {
           const cartTotal = document.querySelector(".cart-footer");
@@ -47,37 +53,22 @@ function cartItemTemplate(item) {
         }
         const htmlItems = cartItems.map((item) => cartItemTemplate(item));
         document.querySelector(".product-list").innerHTML = htmlItems.join("");
-        
+        attachRemoveListeners();
       }
       
-    attachRemoveListeners() {
+    function attachRemoveListeners() {
         // Attach event listeners to each remove button (X)
         const removeButtons = document.querySelectorAll(".remove-item");
       
         removeButtons.forEach((button) => {
           button.addEventListener("click", function () {
             const itemId = button.getAttribute("data-id");
-            //removeItemFromCart(itemId);
-            return itemId
+            removeItemFromCart(itemId);
           });
         });
       }
       
-    removeItemFromCart(itemId) {
-        // we need to fin the way to delite only one item !!!!
-        let cart = getLocalStorage("so-cart") || [];
-      
-        // Remove the item with the given ID
-        cart = cart.filter((item) => item.Id !== itemId);
-      
-        // Update localStorage with the new cart
-        setLocalStorage("so-cart", cart);
-      
-        // Re-render the cart after removing the item
-        renderCartContents();
-      }
-      
-    calculateTotal() {
+    function calculateTotal() {
         // Need to find a way not to display total after the item has been removed
         const cartItems = getLocalStorage("so-cart");
         let total = 0;
@@ -86,4 +77,18 @@ function cartItemTemplate(item) {
         cartPElement.innerHTML = "";
         cartPElement.insertAdjacentHTML("afterbegin", `Total: $${total}`);
       }
+
+    function removeItemFromCart(itemId) {
+      // we need to fin the way to delite only one item !!!!
+      let cart = getLocalStorage("so-cart") || [];
+    
+      // Remove the item with the given ID
+      cart = cart.filter((item) => item.Id !== itemId);
+    
+      // Update localStorage with the new cart
+      setLocalStorage("so-cart", cart);
+    
+      // Re-render the cart after removing the item
+      calculateTotal();
+      renderCartContents();
     }
