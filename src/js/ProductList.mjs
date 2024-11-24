@@ -4,9 +4,10 @@ import { renderListWithTemplate } from "./utils.mjs";
 
 //return a template literal string for each of the templates needed
 function productCardTemplate(product) {
+    const imageUrl = product.Images.PrimaryMedium
     return `<li class="product-card">
-            <a href="product_pages/?product=${product.Id}">
-            <img src=${product.Image}
+            <a href="/product_pages/?product=${product.Id}">
+            <img src=${imageUrl}
               alt=${product.Name} />
             <h3 class="card__brand">${product.Brand.Name}</h3>
             <h2 class="card__name">${product.Name}</h2>
@@ -22,8 +23,9 @@ export default class ProductListing {
     }
 
     async init() {
-        const list = await this.dataSource.getData();
+        const list = await this.dataSource.getData(this.category);
         this.renderList(list);
+        document.querySelector(".title").innerHTML = `<h2>Top Products: ${this.category[0].toUpperCase() + this.category.slice(1)}</h2>`; //to capitalize e.g "Tents"
     }
 
     renderList(list) {
