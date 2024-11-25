@@ -2,8 +2,6 @@
 import {
   getLocalStorage,
   setLocalStorage,
-  changeValueFromKeyList,
-  loadHeaderFooter,
 } from "./utils.mjs";
 
 // //return a template literal string for each of the templates needed 
@@ -11,7 +9,7 @@ function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimaryMedium}"
       alt="${item.Name}"
     />
   </a>

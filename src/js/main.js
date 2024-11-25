@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, changeValueFromKeyList } from "./utils.mjs";
 
-loadHeaderFooter();
+loadHeaderFooter(changeValueFromKeyList);
 //changeValueFromKeyList(cartIconNotification, "so-cart");

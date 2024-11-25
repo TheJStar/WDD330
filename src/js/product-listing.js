@@ -16,5 +16,5 @@ const element = document.querySelector(".product-list");
 const products = new ProductListing(category, dataSource, element);
 products.init();
 
-loadHeaderFooter();
+loadHeaderFooter(changeValueFromKeyList);
 //changeValueFromKeyList(cartIconNotification, "so-cart");

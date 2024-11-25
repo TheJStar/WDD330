@@ -1,7 +1,7 @@
 import ShoppingCart from "./ShoppingCart.mjs";
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, changeValueFromKeyList } from "./utils.mjs";
 
-loadHeaderFooter();
+loadHeaderFooter(changeValueFromKeyList);
 const cart = new ShoppingCart("so-cart", ".product-list");
 cart.init();
 

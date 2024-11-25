@@ -6,7 +6,6 @@ import {
   loadHeaderFooter,
 } from "./utils.mjs";
 
-loadHeaderFooter();
 const productId = getParams("product");
 const dataSource = new ProductData("tents");
 
@@ -15,3 +14,4 @@ const product = new ProductDetails(productId, dataSource);
 
 product.init();
 //changeValueFromKeyList(cartIconNotification, "so-cart");
+loadHeaderFooter(changeValueFromKeyList);
