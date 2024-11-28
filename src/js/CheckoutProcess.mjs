@@ -17,8 +17,9 @@ export default class CheckoutProcess {
 
     init() {
         this.list = getLocalStorage(this.key);
+
         this.calculateSummary();
-        this.calculateOrderTotal(); 
+        this.calculateOrderSubtotal();
     }
 
     // calculate and display the total amount of the items in the cart,
@@ -27,31 +28,54 @@ export default class CheckoutProcess {
         this.Itemtotal = this.list.reduce((total, item) => total + item.Quantity, 0);
     }
 
-    // calculate the shipping and tax amounts. 
+    // calculate the subtotal and tax amounts. 
     // Then use them to along with the cart total to figure out the order total
-    calculateOrderTotal() {
+    calculateOrderSubtotal() {
         // Tax: Use 6% sales tax.
         this.totalPrice = this.list.reduce((total, item) => total + item.ListPrice, 0);
         this.tax = (this.totalPrice * 0.06);
 
+        this.displayOrderSubtotal();
+    }
+
+    displayOrderSubtotal() {
+        const subtotal = document.getElementById("num-items");
+        const tax = document.getElementById("tax");
+
+        subtotal.innerText = `$${this.totalPrice.toFixed(2)}`;
+        tax.innerText = `$${this.tax.toFixed(2)}`;
+    }
+
+    // calculate the shipping and full amounts. 
+    // Then use them to along with the cart total to figure out the order total
+    calculateOrderTotal() {
         // Shipping: Use $10 for the first item 
         // plus $2 for each additional item after that.
-        this.shipping = 10 + (this.Itemtotal - 1) * 2;
-        this.orderTotal = this.shipping + this.tax + this.totalPrice;
-        this.displayOrderTotals();
+        if (this.Itemtotal != 0) {
+            this.shipping = 10 + (this.Itemtotal - 1) * 2;
+            this.orderTotal = this.shipping + this.tax + this.totalPrice;
+        } else {
+            this.shipping = 0;
+            this.orderTotal = this.shipping + this.tax + this.totalPrice;
+        }
+        
+        this.displayOrderTotal();
     }
 
     // once the totals are all calculated display them in the order summary page
-    displayOrderTotals() {
-        const subtotal = document.getElementById("num-items");
+    displayOrderTotal() {
         const shipping = document.getElementById("shipping");
-        const tax = document.getElementById("tax");
         const total = document.getElementById("total");
- 
-        subtotal.innerText = `$${this.totalPrice.toFixed(2)}`;
-        shipping.innerText = `$${this.shipping.toFixed(2)}`;
-        tax.innerText = `$${this.tax.toFixed(2)}`;
-        total.innerText = `$${this.orderTotal.toFixed(2)}`;
+        const zipcode = document.getElementById("zipcode");
+        
+        if (zipcode.value != "") {
+            shipping.innerText = `$${this.shipping.toFixed(2)}`;
+            total.innerText = `$${this.orderTotal.toFixed(2)}`;
+        } else {
+            shipping.innerText = "";
+            total.innerText = "";
+        }
+        
     }
 
     async checkout() {
