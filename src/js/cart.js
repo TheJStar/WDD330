@@ -86,4 +86,4 @@ function calculateTotal(cartItems) {
 
 loadHeaderFooter();
 renderCartContents();
-//changeValueFromKeyList(cartIconNotification, "so-cart");
+changeValueFromKeyList(cartIconNotification, "so-cart");
