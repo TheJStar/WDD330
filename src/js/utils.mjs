@@ -31,19 +31,14 @@ export function getParams(param) {
   const product = urlParams.get(param)
   return product
 }
-// add cards to elemets with specific template
-export async function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
-  let html = "";
-
+// generates content with HTML template 
+export async function renderListWithTemplate(template, parentElement, list, position="afterbegin", clear=false) {
   if (clear) {
-    parentElement.innerHTML = ""
+    parentElement.insertAdjacentHTML(position, ``); 
+  } else {
+    const html = list.map(template);
+    parentElement.insertAdjacentHTML(position, html.join(""));
   }
-
-  list.forEach(product => {
-      html += templateFn(product)
-  });
-
-  parentElement.insertAdjacentHTML(position, html);
 }
 // change the value of an element based on a LocalStorage variable
 export function changeValueFromKeyList(element, key) {

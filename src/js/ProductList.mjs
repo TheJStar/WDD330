@@ -1,5 +1,6 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
+//return a template literal string for each of the templates needed
 function productCardTemplate(product) {
     return `<li class="product-card">
             <a href="product_pages/?product=${product.Id}">
@@ -21,24 +22,18 @@ export default class ProductList {
         this.dataSource = dataSource;
         this.listElement = listElement;
     }
-    async init () {
-        const list = this.productJsonFilter(await this.dataSource.getData(this.category), "Id", ["989CG", "880RT"]);
-
+    async init() {
+        const list = await this.dataSource.getData();
         this.renderList(list);
     }
-    productJsonFilter(list, key, excludeList) {
-        // ignores items from the objects in list if the value of the KEY is not in excludeList
-        let returnlist = [];
-
-        list.forEach(element => {
-            if (!excludeList.includes(element[key])) {
-                returnlist.push(element);
-            };
-        });
-
-        return returnlist;
-    }
-    async renderList(list) {
+    renderList(list) {
+        list = this.filterList(list, "Id", ["880RR", "985RF", "985PR", "344YJ"]);
         renderListWithTemplate(productCardTemplate, this.listElement, list)
+    }
+    filterList(list, key, includeList) {
+        // filter the list of products to just the four (4) needed ones
+        const productIdList = includeList;
+        const filteredList = list.filter((element) => productIdList.includes(element[key]));
+        return filteredList;
     }
 }
