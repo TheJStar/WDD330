@@ -103,6 +103,14 @@ button {
   border: 0;
   font-size: var(--large-font);
   cursor: pointer;
+  transition: all 1s;
+}
+
+button:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  box-shadow: 0px 0px 15px #30303044;
+  transition: all 1s;
 }
 
 .divider {
@@ -198,6 +206,50 @@ button {
 
 .product-detail img {
   width: 100%;
+}
+
+/* checkout styles */
+.checkout-form {
+  margin: 0 auto;
+  width: 70%;
+  max-width: 500px;
+  padding: 0.5em;
+  text-align: left;
+}
+.checkout-form label {
+  display: block;
+  margin: 0.5em 0 0.2em 0;
+}
+.checkout-form input {
+  width: 100%;
+  font-size: 1.2em;
+  transition: all 0.5s;
+  border-radius: 4px;
+}
+.summary p {
+  font-size: 1em;
+}
+.total span {
+  color: #525b0f;
+  font-size: 2rem;
+}
+
+.checkout-form input:required {
+  border-left: solid 5px red;
+  transition: all 1s;
+}
+.checkout-form input:valid {
+  border-left: solid 5px green;
+  transition: all 1s;
+}
+.checkout-form input:invalid {
+  border-left: solid 5px red;
+  transition: all 1s;
+}
+.checkout-form input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(80, 80, 80, 0.575);
+  transition: all 0.5s;
 }
 
 /* Start cart list card styles */

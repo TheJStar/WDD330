@@ -19,91 +19,82 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
-      <form name="checkout">
+      <form class="checkout-form" name="checkout" action="/checkout/index.html" method="post">
         <div class="name">
-          <label for="fname">First name:</label><br />
+          <label for="fname">First name:</label>
           <input
             type="text"
             id="fname"
             name="fname"
             required
-            value="Vera"
           /><br />
 
-          <label for="lname">Last name:</label><br />
+          <label for="lname">Last name:</label>
           <input
             type="text"
             id="lname"
             name="lname"
             required
-            value="Antamanova"
           /><br /><br />
         </div>
 
         <div class="address">
-          <label for="street">Street Address:</label><br />
+          <label for="street">Street Address:</label>
           <input
             type="text"
             id="street"
             name="street"
             required
-            value="Oud"
           /><br />
 
-          <label for="city">City:</label><br />
+          <label for="city">City:</label>
           <input
             type="text"
             id="city"
             name="city"
             required
-            value="Abu Dhabi"
           /><br />
 
-          <label for="state">State:</label><br />
+          <label for="state">State:</label>
           <input
             type="text"
             id="state"
             name="state"
             required
-            value="AD"
           /><br />
 
-          <label for="zipcode">Zip Code:</label><br />
+          <label for="zipcode">Zip Code:</label>
           <input
             type="text"
             id="zipcode"
             name="zipcode"
             required
-            value=""
           /><br /><br />
         </div>
 
         <div class="payment">
-          <label for="cardNum">Credit Card Number:</label><br />
+          <label for="cardNum">Credit Card Number:</label>
           <input
             type="text"
             id="cardNum"
             name="cardNum"
             required
-            value="1234123412341234"
           /><br />
 
-          <label for="expDate">Expiration Date:</label><br />
+          <label for="expDate">Expiration Date:</label>
           <input
             type="text"
             id="expDate"
             name="expDate"
             required
-            value="25.01.2028"
           /><br />
 
-          <label for="securityCode">Security Code:</label><br />
+          <label for="securityCode">Security Code:</label>
           <input
             type="text"
             id="securityCode"
             name="securityCode"
             required
-            value="123"
           /><br /><br />
         </div>
 
@@ -114,7 +105,7 @@
           <p class="total">Order Total: <span id="total"></span></p>
         </div>
 
-        <input type="submit" id="submit" value="Checkout" />
+        <button type="submit" id="submit">Checkout</button>
       </form>
     </main>
 

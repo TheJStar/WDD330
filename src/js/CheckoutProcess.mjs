@@ -1,7 +1,7 @@
 import { getLocalStorage } from "./utils.mjs"
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 
-const services = new ProductData();
+const services = new ExternalServices();
 
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
@@ -82,6 +82,7 @@ export default class CheckoutProcess {
         const formElement = document.forms["checkout"];
         const json = dataToJSON(formElement);
 
+        json.orderDate = new Date();
         json.orderTotal = this.orderTotal;
         json.shipping = this.shipping;
         json.tax = this.tax;
