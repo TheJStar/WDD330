@@ -41,10 +41,12 @@ export async function renderListWithTemplate(template, parentElement, list, posi
   }
 }
 // change the value of an element based on a LocalStorage variable
-export function changeValueFromKeyList(element, key) {
+export function changeValueFromKeyList(key) {
+  const element = document.querySelector(".item-count")
   if (getLocalStorage(key) == null)  {
     element.textContent = ""
   } else {
+    
     element.textContent = getLocalStorage(key).length
   }
 }
@@ -56,7 +58,7 @@ export function renderWithTemplate(template, parentElement, date, callback) {
   }
 }
 
-export async function loadHeaderFooter() {
+export async function loadHeaderFooter(callback) {
   //Load the header and footer templates in from our partials
   const headerTemplate = await loadTemplate("../partials/header.html");
   const footerTemplate = await loadTemplate("../partials/footer.html");
@@ -68,6 +70,7 @@ export async function loadHeaderFooter() {
   // Render the header and footer
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+  changeValueFromKeyList("so-cart")
 }
 
 async function loadTemplate(path) {

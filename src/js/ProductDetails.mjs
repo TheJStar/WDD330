@@ -1,5 +1,5 @@
-import { setLocalStorage, getLocalStorage, getParams, loadHeaderFooter } from "./utils.mjs";
-//loadHeaderFooter(); 
+import { setLocalStorage, getLocalStorage} from "./utils.mjs";
+
 export default class ProductDetails {
     constructor(productId, dataSource) {
         this.productId = productId;
@@ -13,8 +13,9 @@ export default class ProductDetails {
         this.renderProductDetails("main")
         // once the HTML is rendered we can add a listener to Add to Cart button
         // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
-        document.getElementById('addToCart')
-            .addEventListener('click', this.addToCart.bind(this));
+        console.log(this.product);
+        document.getElementById("addToCart")
+            .addEventListener("click", this.addToCart.bind(this));
     }
     addToCart() {
         let cart = getLocalStorage("so-cart");
@@ -35,7 +36,6 @@ export default class ProductDetails {
         setLocalStorage("so-cart", cart);
     }
     async renderProductDetails(selector) {
-        const imageUrl = this.product.Images.PrimaryLarge
         const element = document.querySelector(selector)
         const html = `
             <section class="product-detail">
@@ -45,7 +45,7 @@ export default class ProductDetails {
 
             <img
             class="divider"
-            src="${imageUrl}"
+            src="${this.product.Images.PrimaryLarge}"
             alt="${this.product.NameWithoutBrand}"
             />
 
