@@ -4,7 +4,6 @@ import { getParams, changeValueFromKeyList } from "./utils.mjs";
 
 const productId = getParams("product");
 const dataSource = new ProductData("tents");
-
 const product = new ProductDetails(productId, dataSource);
 const cartIconNotification = document.querySelector(".item-count");
 
