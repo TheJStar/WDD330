@@ -8,7 +8,8 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/checkout.js" type="module"></script>
   </head>
 
   <body>
@@ -18,6 +19,103 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
+      <form name="checkout">
+        <div class="name">
+          <label for="fname">First name:</label><br />
+          <input
+            type="text"
+            id="fname"
+            name="fname"
+            required
+            value="Vera"
+          /><br />
+
+          <label for="lname">Last name:</label><br />
+          <input
+            type="text"
+            id="lname"
+            name="lname"
+            required
+            value="Antamanova"
+          /><br /><br />
+        </div>
+
+        <div class="address">
+          <label for="street">Street Address:</label><br />
+          <input
+            type="text"
+            id="street"
+            name="street"
+            required
+            value="Oud"
+          /><br />
+
+          <label for="city">City:</label><br />
+          <input
+            type="text"
+            id="city"
+            name="city"
+            required
+            value="Abu Dhabi"
+          /><br />
+
+          <label for="state">State:</label><br />
+          <input
+            type="text"
+            id="state"
+            name="state"
+            required
+            value="AD"
+          /><br />
+
+          <label for="zipcode">Zip Code:</label><br />
+          <input
+            type="text"
+            id="zipcode"
+            name="zipcode"
+            required
+            value="00000"
+          /><br /><br />
+        </div>
+
+        <div class="payment">
+          <label for="cardNum">Credit Card Number:</label><br />
+          <input
+            type="text"
+            id="cardNum"
+            name="cardNum"
+            required
+            value="1234123412341234"
+          /><br />
+
+          <label for="expDate">Expiration Date:</label><br />
+          <input
+            type="text"
+            id="expDate"
+            name="expDate"
+            required
+            value="25.01.2028"
+          /><br />
+
+          <label for="securityCode">Security Code:</label><br />
+          <input
+            type="text"
+            id="securityCode"
+            name="securityCode"
+            required
+            value="123"
+          /><br /><br />
+        </div>
+
+        <div class="summary">
+          <p class="cartTotal">Item Subtotal: <span id="num-items"></span></p>
+          <p class="shipping">Shipping: <span id="shipping"></span></p>
+          <p class="tax">Tax: <span id="tax"></span></p>
+          <p class="total">Order Total: <span id="total"></span></p>
+        </div>
+
+        <input type="submit" id="submit" value="Checkout" />
+      </form>
     </main>
 
     <footer id="footer"></footer>
