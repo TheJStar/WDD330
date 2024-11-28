@@ -4,6 +4,8 @@ import {
   changeValueFromKeyList,
 } from "./utils.mjs";
 
+import { loadHeaderFooter } from "./utils.mjs";
+
 const cartIconNotification = document.querySelector(".item-count");
 
 function renderCartContents() {
@@ -26,22 +28,23 @@ function renderCartContents() {
 }
 
 function cartItemTemplate(item) {
+  const imageUrl = item.Images.PrimaryMedium;
   const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
-  </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: ${item.Quantity}</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
-  <!-- Remove Button -->
-    <button class="remove-item" data-id="${item.Id}">X</button>
-</li>`;
+    <a href="#" class="cart-card__image">
+      <img
+        src="${imageUrl}"
+        alt="${item.Name}"
+      />
+    </a>
+    <a href="#">
+      <h2 class="card__name">${item.Name}</h2>
+    </a>
+    <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+    <p class="cart-card__quantity">qty: ${item.Quantity}</p>
+    <p class="cart-card__price">$${item.FinalPrice}</p>
+    <!-- Remove Button -->
+      <button class="remove-item" data-id="${item.Id}">X</button>
+  </li>`;
 
   return newItem;
 }
@@ -81,5 +84,6 @@ function calculateTotal(cartItems) {
   cartPElement.insertAdjacentHTML("afterbegin", `Total: $${total}`);
 }
 
+loadHeaderFooter();
 renderCartContents();
 changeValueFromKeyList(cartIconNotification, "so-cart");

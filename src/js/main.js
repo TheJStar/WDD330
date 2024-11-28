@@ -1,6 +1,6 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
-import { changeValueFromKeyList } from "./utils.mjs";
+import { changeValueFromKeyList, loadHeaderFooter } from "./utils.mjs";
 
 const category = "tents";
 const dataSource = new ProductData(category);
@@ -11,3 +11,4 @@ const cartIconNotification = document.querySelector(".item-count");
 
 productList.init();
 changeValueFromKeyList(cartIconNotification, "so-cart");
+loadHeaderFooter();

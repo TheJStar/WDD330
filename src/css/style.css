@@ -247,6 +247,41 @@ button {
   display: none;
 }
 
+.products {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.product-grid {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-grid a {
+  text-decoration: none;
+}
+
+.product-grid li {
+  text-align: center;
+}
+
+.product-grid img {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto 15px;
+}
+
+.product-grid h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #000;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

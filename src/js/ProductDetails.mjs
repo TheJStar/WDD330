@@ -1,5 +1,5 @@
-import { setLocalStorage, getLocalStorage, getParams } from "./utils.mjs";
-
+import { setLocalStorage, getLocalStorage, getParams, loadHeaderFooter } from "./utils.mjs";
+//loadHeaderFooter(); 
 export default class ProductDetails {
     constructor(productId, dataSource) {
         this.productId = productId;
@@ -35,6 +35,7 @@ export default class ProductDetails {
         setLocalStorage("so-cart", cart);
     }
     async renderProductDetails(selector) {
+        const imageUrl = this.product.Images.PrimaryLarge
         const element = document.querySelector(selector)
         const html = `
             <section class="product-detail">
@@ -44,7 +45,7 @@ export default class ProductDetails {
 
             <img
             class="divider"
-            src="${this.product.Image}"
+            src="${imageUrl}"
             alt="${this.product.NameWithoutBrand}"
             />
 
