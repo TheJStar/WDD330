@@ -31,9 +31,8 @@ export function getParams(param) {
   const product = urlParams.get(param)
   return product
 }
-
 // generates content with HTML template 
-export function renderListWithTemplate(template, parentElement, list, position="afterbegin", clear=false) {
+export async function renderListWithTemplate(template, parentElement, list, position="afterbegin", clear=false) {
   if (clear) {
     parentElement.insertAdjacentHTML(position, ``); 
   } else {
@@ -41,7 +40,6 @@ export function renderListWithTemplate(template, parentElement, list, position="
     parentElement.insertAdjacentHTML(position, html.join(""));
   }
 }
-
 // change the value of an element based on a LocalStorage variable
 export function changeValueFromKeyList(key) {
   const element = document.querySelector(".item-count")
