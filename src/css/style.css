@@ -216,19 +216,23 @@ button:hover {
   padding: 0.5em;
   text-align: left;
 }
+
 .checkout-form label {
   display: block;
   margin: 0.5em 0 0.2em 0;
 }
+
 .checkout-form input {
   width: 100%;
   font-size: 1.2em;
   transition: all 0.5s;
   border-radius: 4px;
 }
+
 .summary p {
   font-size: 1em;
 }
+
 .total span {
   color: #525b0f;
   font-size: 2rem;
@@ -238,14 +242,17 @@ button:hover {
   border-left: solid 5px red;
   transition: all 1s;
 }
+
 .checkout-form input:valid {
   border-left: solid 5px green;
   transition: all 1s;
 }
+
 .checkout-form input:invalid {
   border-left: solid 5px red;
   transition: all 1s;
 }
+
 .checkout-form input:focus {
   outline: none;
   box-shadow: 0 0 10px rgba(80, 80, 80, 0.575);
@@ -332,6 +339,20 @@ button:hover {
   font-size: 1.5rem;
   margin: 0;
   color: #000;
+}
+
+/* alert styles */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+  background-color: rgb(250, 181, 125);
+  border: 1px solid black;
+}
+
+.alert > p {
+  margin: 0px;
 }
 
 @media screen and (min-width: 500px) {
