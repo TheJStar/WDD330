@@ -78,3 +78,20 @@ async function loadTemplate(path) {
   const template = await responce.text();
   return template;
 }
+
+export async function addToNav(list) {
+  let navTemplate = "<ul>";
+
+  list.forEach(element => {
+    if (list[list.length-1] == element) {
+      navTemplate += `<li>${element[0]}</li>`
+    } else {
+      navTemplate += `<li><a href="${element[1]}">${element[0]}</a></li>`
+    }
+  });
+
+  navTemplate += "</ul>"
+  const navElement = document.getElementById("nav")
+  // Render the nav
+  renderWithTemplate(navTemplate, navElement);
+}

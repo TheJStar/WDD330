@@ -13,7 +13,7 @@ export default class ProductDetails {
         this.renderProductDetails("main")
         // once the HTML is rendered we can add a listener to Add to Cart button
         // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
-        console.log(this.product);
+
         document.getElementById("addToCart")
             .addEventListener("click", this.addToCart.bind(this));
     }
