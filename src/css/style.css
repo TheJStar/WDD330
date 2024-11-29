@@ -126,6 +126,11 @@ button:hover {
   position: relative;
   right: -10px;
   top: -40px;
+
+  /* animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 1s;
+  animation-name: bobb; */
 }
 
 .cart {
@@ -146,6 +151,37 @@ button:hover {
   fill: gray;
 }
 
+.cart-animated {
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 0.5s;
+  animation-name: bobbUpDown;
+}
+
+.cart-remove-animated {
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 0.5s;
+  animation-name: bobbLeftRight;
+}
+
+@keyframes bobbUpDown {
+  0%, 100% {
+    transform: translate(0, 0);
+  } 50% {
+    transform: translate(0, -10px);
+  }
+}
+
+@keyframes bobbLeftRight {
+  0%, 100% {
+    transform: translate(0, 0);
+  } 33% {
+    transform: translate(-5px, 0);
+  } 66% {
+    transform: translate(5px, 0);
+  }
+}
 /* End cart icon styles */
 
 .mission {

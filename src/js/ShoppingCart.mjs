@@ -2,6 +2,8 @@
 import {
   getLocalStorage,
   setLocalStorage,
+  changeValueFromKeyList,
+  toggleClass
 } from "./utils.mjs";
 
 // //return a template literal string for each of the templates needed 
@@ -63,6 +65,8 @@ function renderCartContents() {
         button.addEventListener("click", function () {
           const itemId = button.getAttribute("data-id");
           removeItemFromCart(itemId);
+          toggleClass(".item-count", "cart-remove-animated", 500)
+          changeValueFromKeyList("so-cart")
         });
       });
     }
