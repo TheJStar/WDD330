@@ -3,16 +3,23 @@ import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter(changeValueFromKeyList);
 
-const zipcode = document.querySelector("#zipcode");
+const zip = document.querySelector("#zip");
 const submit = document.querySelector("#submit");
 const myCheckout = new CheckoutProcess("so-cart", ".summary");
 myCheckout.init();
 
-zipcode.addEventListener("change", () => {
+zip.addEventListener("change", () => {
   myCheckout.calculateOrderTotal();
 });
 submit.addEventListener("submit", (event) => {
-  myCheckout.checkout();
-  console.log("Yay")
   event.preventDefault();
-})
+  myCheckout.checkout();
+});
+
+document.querySelector("#submit").addEventListener("click", (e) => {
+  e.preventDefault();
+  const myForm = document.forms[0];
+  const chk_status = myForm.checkValidity();
+  myForm.reportValidity();
+  if (chk_status) myCheckout.checkout();
+});

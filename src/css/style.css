@@ -216,19 +216,23 @@ button:hover {
   padding: 0.5em;
   text-align: left;
 }
+
 .checkout-form label {
   display: block;
   margin: 0.5em 0 0.2em 0;
 }
+
 .checkout-form input {
   width: 100%;
   font-size: 1.2em;
   transition: all 0.5s;
   border-radius: 4px;
 }
+
 .summary p {
   font-size: 1em;
 }
+
 .total span {
   color: #525b0f;
   font-size: 2rem;
@@ -238,14 +242,17 @@ button:hover {
   border-left: solid 5px red;
   transition: all 1s;
 }
+
 .checkout-form input:valid {
   border-left: solid 5px green;
   transition: all 1s;
 }
+
 .checkout-form input:invalid {
   border-left: solid 5px red;
   transition: all 1s;
 }
+
 .checkout-form input:focus {
   outline: none;
   box-shadow: 0 0 10px rgba(80, 80, 80, 0.575);
@@ -332,6 +339,110 @@ button:hover {
   font-size: 1.5rem;
   margin: 0;
   color: #000;
+}
+
+/* alert styles */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+  background-color: rgb(250, 181, 125);
+  border: 1px solid black;
+}
+
+.alert > p {
+  margin: 0px;
+}
+
+/*Images */
+.container {
+  box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  padding: 16px;
+  margin-top: -50px;
+  color: rgb(92, 84, 84);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
 }
 
 @media screen and (min-width: 500px) {
