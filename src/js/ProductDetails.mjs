@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage} from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, addToNav } from "./utils.mjs";
 
 export default class ProductDetails {
     constructor(productId, dataSource) {
@@ -10,10 +10,11 @@ export default class ProductDetails {
         this.product = await this.dataSource.findProductById(this.productId)
         // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
         // once we have the product details we can render out the HTML
+        addToNav([["Home", "/"], [this.product.Category, `/product-listing/?category=${this.product.Category}`], [this.product.Name, ""]])
         this.renderProductDetails("main")
         // once the HTML is rendered we can add a listener to Add to Cart button
         // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
-        console.log(this.product);
+
         document.getElementById("addToCart")
             .addEventListener("click", this.addToCart.bind(this));
     }

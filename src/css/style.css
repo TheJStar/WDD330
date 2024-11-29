@@ -89,6 +89,41 @@ header {
   margin-top: -1.7em;
 }
 
+nav ul {
+  display: flex;
+  padding: 1rm;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline;
+  padding: 3px;
+  transition: all 0.5s;
+  text-transform: capitalize;
+  color: var(--primary-color);
+  user-select: none;
+}
+
+nav ul li+li:before {
+  content: "/\00a0";
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav ul li:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 5px;
+}
+
+nav ul li:hover a {
+  color: inherit;
+}
+
+
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
