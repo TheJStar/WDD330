@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs"
+import { getLocalStorage, addToNav } from "./utils.mjs"
 import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
@@ -17,7 +17,8 @@ export default class CheckoutProcess {
 
     init() {
         this.list = getLocalStorage(this.key);
-
+        
+        addToNav([["Home", "/"], ["Cart", "/cart/"], ["Checkout", ""]])
         this.calculateSummary();
         this.calculateOrderSubtotal();
     }

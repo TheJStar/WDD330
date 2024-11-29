@@ -12,12 +12,10 @@ const dataSource = new ExternalServices();
 const element = document.querySelector(".product-list");
 
 //const cartIconNotification = document.querySelector(".item-count");
-const pr = await dataSource.getData(category)
-console.log(pr)
+const pr = dataSource.getData(category)
+
 // create an instance of your ProductList class
 const products = new ProductList(category, dataSource, element);
 products.init();
 
 loadHeaderFooter(changeValueFromKeyList);
-//changeValueFromKeyList(cartIconNotification, "so-cart");
-addToNav([["Home", "/"], [category, ""]])

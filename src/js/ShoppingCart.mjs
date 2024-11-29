@@ -2,6 +2,7 @@
 import {
   getLocalStorage,
   setLocalStorage,
+  addToNav
 } from "./utils.mjs";
 
 // //return a template literal string for each of the templates needed 
@@ -33,6 +34,7 @@ export default class ShoppingCart {
     }
 
   init () {
+    addToNav([["Home", "/"], ["Cart", ""]])
     renderCartContents();
     calculateTotal();
   }

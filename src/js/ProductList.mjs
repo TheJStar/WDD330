@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, addToNav } from "./utils.mjs";
 
 //return a template literal string for each of the templates needed
 function productCardTemplate(product) {
@@ -22,6 +22,7 @@ export default class ProductList {
     }
     async init() {
         const list = await this.dataSource.getData(this.category);
+        addToNav([["Home", "/"], [this.category, ""]]);
         this.renderList(list);
         document.querySelector(".title").innerHTML = `${this.category.charAt(0).toUpperCase() + this.category.slice(1)}`;
     }
