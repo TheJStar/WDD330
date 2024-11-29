@@ -1,6 +1,6 @@
-//const baseURL = import.meta.env.VITE_SERVER_URL;
+const baseURL = import.meta.env.VITE_SERVER_URL;
 //const baseURL = "http://wdd330-backend.onrender.com/checkout";
-const baseURL = "http://server-nodejs.cit.byui.edu:3000/";
+//const baseURL = "http://server-nodejs.cit.byui.edu:3000/";
 
 async function convertToJson(res) {
   const data = await res.json();
