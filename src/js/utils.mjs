@@ -47,7 +47,7 @@ export function changeValueFromKeyList(key) {
     element.textContent = ""
   } else {
     
-    element.textContent = getLocalStorage(key).length
+    element.textContent = getLocalStorage(key).length;
   }
 }
 
@@ -77,4 +77,13 @@ async function loadTemplate(path) {
   const responce = await fetch(path);
   const template = await responce.text();
   return template;
+}
+
+export function toggleClass(selection, addClass, time=1000) {
+  const element = document.querySelector(selection);
+  element.classList.add(addClass);
+
+  setTimeout(()=> {
+    element.classList.remove(addClass);
+  }, time)
 }
