@@ -7,13 +7,13 @@ import {
 // //return a template literal string for each of the templates needed 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
+  <a href="#" class="cart-card__image" data-action="show-modal" data-id="${item.Id}">
     <img
       src="${item.Images.PrimaryMedium}"
       alt="${item.Name}"
     />
   </a>
-  <a href="#">
+  <a href="#" data-action="show-modal" data-id="${item.Id}">
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
@@ -53,6 +53,7 @@ function renderCartContents() {
       const htmlItems = cartItems.map((item) => cartItemTemplate(item));
       document.querySelector(".product-list").innerHTML = htmlItems.join("");
       attachRemoveListeners();
+      attachShowModalListeners();
     }
     
   function attachRemoveListeners() {
@@ -91,3 +92,51 @@ function renderCartContents() {
     calculateTotal();
     renderCartContents();
   }
+
+function showModal(itemId) {
+    const cartItem = getLocalStorage("so-cart").find(item => item.Id === itemId);
+    const modal = document.querySelector(".modal");
+    const modalContent = modal.querySelector(".modal-content");
+
+    if (!cartItem) {
+        console.error("Item not found in cart!");
+        return;
+    }
+
+    // Show the modal
+    modal.classList.remove("hidden");
+
+    modalContent.innerHTML = `
+        <h2>${cartItem.Name}</h2>
+        <img src="${cartItem.Images.PrimaryLarge}" alt="${cartItem.Name}" />
+        <p>Brand: ${cartItem.Brand.Name}</p>
+        <p>Color: ${cartItem.Colors[0].ColorName}</p>
+        <p>Price: $${cartItem.FinalPrice}</p>
+        <p>Quantity: ${cartItem.Quantity}</p>
+        
+        <span class="close-modal">&times;</span>
+    `;
+
+    document.querySelector(".close-modal").addEventListener("click", function() {
+        modal.classList.add("hidden");
+    });
+
+    modal.addEventListener("click", function(e) {
+        if (e.target === modal) {
+            modal.classList.add("hidden");
+        }
+    });
+}
+
+function attachShowModalListeners() {
+
+  const cartItemLinks = document.querySelectorAll('[data-action="show-modal"]');
+  cartItemLinks.forEach(link => {
+
+      link.addEventListener("click", (event) => {
+          event.preventDefault();  
+          const itemId = link.getAttribute("data-id"); 
+          showModal(itemId); 
+      });
+  });
+}
