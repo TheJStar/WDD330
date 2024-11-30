@@ -4,8 +4,26 @@ import { renderListWithTemplate } from "./utils.mjs";
 function productCardTemplate(product) {
     return `<li class="product-card">
             <a href="../product_pages/?product=${product.Id}">
-            <img src=${product.Images.PrimaryMedium}
-              alt=${product.Name} />
+            <picture>
+                <source
+                    srcset="${product.Images.PrimarySmall}"
+                    media="(max-width: 480px)"
+                />
+
+                <source
+                    srcset="${product.Images.PrimaryMedium}"
+                    media="(max-width: 768px)"
+                />
+                <source
+                    srcset="${product.Images.PrimaryLarge}"
+                    media="(min-width: 769px)"
+                />
+                <img
+                    class="divider"
+                    src="${product.Images.PrimaryLarge}" 
+                    alt="${product.NameWithoutBrand}"
+                />
+            </picture>
             <h3 class="card__brand">${product.Brand.Name}</h3>
             <h2 class="card__name">${product.NameWithoutBrand}</h2>
             <p class="product-card__price">$${product.ListPrice}</p>

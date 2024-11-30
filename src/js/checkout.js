@@ -13,6 +13,6 @@ zipcode.addEventListener("change", () => {
 });
 submit.addEventListener("submit", (event) => {
   myCheckout.checkout();
-  console.log("Yay")
+  console.log("Yay");
   event.preventDefault();
-})
+});
