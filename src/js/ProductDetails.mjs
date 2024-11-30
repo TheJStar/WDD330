@@ -42,12 +42,19 @@ export default class ProductDetails {
             <h3>${this.product.Brand.Name}</h3>
 
             <h2 class="divider">${this.product.NameWithoutBrand}</h2>
+            <picture>
+                <source
+                    srcset="${this.product.Images.PrimaryMedium}"
+                    media="(max-width: 400px)"
+                />
 
-            <img
-            class="divider"
-            src="${this.product.Images.PrimaryLarge}"
-            alt="${this.product.NameWithoutBrand}"
-            />
+                <img
+                    class="divider"
+                    src="${this.product.Images.PrimaryLarge}" 
+                    alt="${this.product.NameWithoutBrand}"
+                    media="(min-width: 480px)"
+                />
+            </picture>
 
             <p class="product-card__price">$${this.product.ListPrice}</p>
 
