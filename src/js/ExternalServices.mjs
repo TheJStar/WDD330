@@ -1,11 +1,12 @@
 const baseURL = import.meta.env.VITE_SERVER_URL;
 //const baseURL = "http://wdd330-backend.onrender.com/checkout";
 
-function convertToJson(res) {
+async function convertToJson(res) {
+  const jsonResponse = await res.json();
   if (res.ok) {
-    return res.json();
+    return jsonResponse;
   } else {
-    throw new Error("Bad Response");
+    throw { name: 'serviceError', message: jsonResponse };
   }
 }
 
@@ -31,6 +32,6 @@ export default class ExternalServices {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(orderObject)
     }
-    return await fetch(baseURL, options).then(convertToJson);
+    return await fetch(baseURL +  + "checkout/", options).then(convertToJson);
   }
 }
