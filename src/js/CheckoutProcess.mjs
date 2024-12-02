@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs"
+import { getLocalStorage, alertMessage, clearAlerts, setLocalStorage } from "./utils.mjs"
 import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
@@ -66,9 +66,9 @@ export default class CheckoutProcess {
     displayOrderTotal() {
         const shipping = document.getElementById("shipping");
         const total = document.getElementById("total");
-        const zipcode = document.getElementById("zipcode");
+        const zip = document.getElementById("zip");
         
-        if (zipcode.value != "") {
+        if (zip.value != "") {
             shipping.innerText = `$${this.shipping.toFixed(2)}`;
             total.innerText = `$${this.orderTotal.toFixed(2)}`;
         } else {
@@ -83,16 +83,23 @@ export default class CheckoutProcess {
         const json = dataToJSON(formElement);
 
         json.orderDate = new Date();
-        json.orderTotal = this.orderTotal;
+        json.orderTotal = this.orderTotal.toFixed(2);
         json.shipping = this.shipping;
-        json.tax = this.tax;
+        json.tax = this.tax.toFixed(2);
         json.Itemtotal = this.Itemtotal;
         json.items = packageItems(this.list);
         try {
             const res = await services.checkout(json);
             console.log(res);
+            setLocalStorage("so-cart", [])
+            location.assign("/checkout/success.html");
         } catch(err) {
+            let errorMessages = await err.message
             console.log(err);
+            clearAlerts();
+            for (let message in errorMessages) {
+                alertMessage(errorMessages[message]);
+            }
         }
     }
 }
